@@ -44,8 +44,9 @@ const jsonify = () => {
         const dataSet = li.querySelector('a').dataset;
 	    const { orig, category, qty } = dataSet;
 		const color = (li.querySelector('span').className.match(/card-color-([a-z]*)/) || ["",""])[1];
+		const type = (li.querySelector('span').className.match(/card-type-([a-z]*)/) || ["",""])[1];
 	
-		json.cards.push({ name: orig, category, qty, color });
+		json.cards.push({ name: orig, category, qty, color, type });
 	  });
 	});
   
