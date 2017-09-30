@@ -27,12 +27,13 @@ const jsonify = () => {
   
   json.url = document.URL;
   
-  json.author = '';
-  document.querySelector('.well-jumbotron').querySelectorAll('p')[1].querySelectorAll('a').forEach(a => json.author += a.innerHTML.trim());
+  json.author = document.querySelector('.well-jumbotron').querySelectorAll('p')[1].innerText.trim();
   
   json.tags = [];
   document.querySelector('.well-jumbotron').querySelector('p').querySelectorAll('a').forEach(a => json.tags.push(a.innerHTML.trim()));
-	
+
+  json.description = document.querySelector('.add-img-responsive', '.add-embed-responsive').innerText.trim();
+  
   json.cards = [];  
 
   // Get all of the board lists
