@@ -1,4 +1,3 @@
-const body = document.querySelector('body');
 const main = document.querySelector('#main-content');
 
 const jsonBtnHtml = `
@@ -26,6 +25,11 @@ const jsonify = () => {
   
   json.name = document.querySelector('.well-jumbotron').querySelector('h2').innerHTML.trim();
   
+  json.url = document.URL;
+  
+  json.author = '';
+  document.querySelector('.well-jumbotron').querySelectorAll('p')[1].querySelectorAll('a').forEach(a => json.author += a.innerHTML.trim());
+  
   json.tags = [];
   document.querySelector('.well-jumbotron').querySelector('p').querySelectorAll('a').forEach(a => json.tags.push(a.innerHTML.trim()));
 	
@@ -45,9 +49,9 @@ const jsonify = () => {
 	  });
 	});
   
-  body.innerHTML = JSON.stringify(json);
-  body.style.backgroundImage = 'none';
-  body.style.color = 'black';
+  // Open the JSON output in a new tab
+  const newTab = window.open();
+  newTab.document.querySelector('body').innerHTML = JSON.stringify(json);
 }
 
 jsonBtnDiv.addEventListener("click", jsonify, false);
