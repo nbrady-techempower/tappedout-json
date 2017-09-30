@@ -52,7 +52,9 @@ const jsonify = () => {
   
   // Open the JSON output in a new tab
   const newTab = window.open();
-  newTab.document.querySelector('body').innerHTML = JSON.stringify(json);
+  const pre = document.createElement('pre');
+  pre.append(document.createTextNode(JSON.stringify(json, null, 2)));
+  newTab.document.querySelector('body').append(pre);
 }
 
 jsonBtnDiv.addEventListener("click", jsonify, false);
