@@ -1,0 +1,12 @@
+{
+  "manifest_version":2,
+  "name":"tappedout-json",
+  "version":"1.0",
+  "description":"Turns MTG decks on tapped out into a json file",
+  "content_scripts":[
+  {
+    "matches":["http://tappedout.net/mtg-decks/*"],
+    "js":["./main.js"]
+  }]
+
+}
