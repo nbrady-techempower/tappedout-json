@@ -34,6 +34,12 @@ const jsonify = () => {
 
   json.description = document.querySelector('.add-img-responsive', '.add-embed-responsive').innerText.trim();
   
+  // Check for a commander image
+  const commanderTag = document.querySelector('.commander-img');
+  if (commanderTag) {
+	json.commander = { image: commanderTag.src };
+  }
+	
   json.cards = [];  
 
   // Get all of the board lists
