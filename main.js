@@ -44,10 +44,12 @@ const jsonify = () => {
 		if (!li.querySelector('a')) return;
         const dataSet = li.querySelector('a').dataset;
 	    const { orig, category, qty } = dataSet;
-		const color = (li.querySelector('span').className.match(/card-color-([a-z]*)/) || ["",""])[1];
-		const type = (li.querySelector('span').className.match(/card-type-([a-z]*)/) || ["",""])[1];
+		const span = li.querySelector('span');
+		const color = (span.className.match(/card-color-([a-z]*)/) || ["",""])[1];
+		const type = (span.className.match(/card-type-([a-z]*)/) || ["",""])[1];
+		const cmc = (span.className.match(/cost-([0-9]*)/) || ["",""])[1] * 1;
 	
-		json.cards.push({ name: orig, category, qty, color, type });
+		json.cards.push({ name: orig, category, qty, color, type, cmc });
 	  });
 	});
   
